@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+<title id="title">ØĞMÛŠKŶ Official Brand</title><desc id="desc">Black and gold crowned monogram emblem with ØĞMÛŠKŶ wordmark.</desc>
+<defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a6"/><stop offset=".28" stop-color="#d99b2b"/><stop offset=".52" stop-color="#fff4bd"/><stop offset=".76" stop-color="#b87513"/><stop offset="1" stop-color="#ffe28a"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<circle cx="360" cy="360" r="337" fill="#090909" stroke="url(#gold)" stroke-width="15"/><circle cx="360" cy="360" r="315" fill="none" stroke="#8b5d19" stroke-width="3"/>
+<g fill="url(#gold)" stroke="#6d430d" stroke-width="3"><path d="M250 180l-28-62 57 38 28-67 53 70 53-70 28 67 57-38-28 62-110 38z"/><path d="M270 218h180l-18 36H288z"/></g>
+<g filter="url(#glow)"><path d="M210 300Q360 140 510 300Q555 355 510 420Q360 575 210 420Q165 355 210 300Z" fill="none" stroke="url(#gold)" stroke-width="28"/><path d="M252 275L360 390 468 275 468 452 425 452 425 370 360 440 295 370 295 452 252 452Z" fill="#0a0b10" stroke="url(#gold)" stroke-width="11" stroke-linejoin="round"/></g>
+<text x="360" y="548" text-anchor="middle" fill="url(#gold)" font-family="Georgia,serif" font-size="66" font-weight="bold" letter-spacing="2">ØĞMÛŠKŶ</text>
+<path d="M125 580H595" stroke="url(#gold)" stroke-width="3"/><text x="360" y="625" text-anchor="middle" fill="#f2d28b" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="7">OFFICIAL BRAND</text></svg>
