@@ -1,34 +1,27 @@
 # ØĞMÛŠKŶ AI Studio — Vercel setup
 
-This repository remains a static HTML site with Vercel Node serverless functions under `/api`.
+Static HTML with Vercel Node serverless functions.
 
-## Pages
-- `/` — branded landing page
-- `/studio.html` — AI workspace: chat, image generation, photo editing, video-provider entry point, and session-only gallery
+## Features
+- AI Agent: /api/agent
+- AI website source generation: /api/website
+- Image generation and editing: /api/images, /api/edit
+- Video generation: /api/video
+- Consent-gated talking avatar adapter: /api/clone
+- Supabase auth config: /api/config
+- Authenticated Stripe subscription checkout: /api/checkout
 
-## Required Vercel environment variables
-Add these in Project → Settings → Environment Variables, then redeploy:
+## Environment variables
+OpenAI: OPENAI_API_KEY (required), OPENAI_CHAT_MODEL (optional), OPENAI_IMAGE_MODEL (optional).
+Video: VIDEO_PROVIDER_URL, VIDEO_PROVIDER_API_KEY.
+Avatar: CLONE_PROVIDER_URL, CLONE_PROVIDER_API_KEY.
+Supabase: SUPABASE_URL, SUPABASE_ANON_KEY.
+Stripe: STRIPE_SECRET_KEY, STRIPE_CREATOR_PRICE_ID, STRIPE_PRO_PRICE_ID, SITE_URL.
 
-- `OPENAI_API_KEY` — secret OpenAI API key (server-side only)
-- `OPENAI_CHAT_MODEL` — optional; defaults to `gpt-6-astra`
-- `OPENAI_IMAGE_MODEL` — optional; defaults to `gpt-image-2.5-sunburst`
+Configure secrets in Vercel only; never commit API keys. Supabase signup/sign-in is included in the studio. Configure email confirmation, password policy and redirect URLs in Supabase. Add database tables, Row Level Security, durable project storage and per-user quotas before public launch.
 
-Image generation and editing use the OpenAI Responses/Images platform endpoints. API usage is billed separately by the provider. Some image models may require organization verification.
+Create recurring Stripe prices. Checkout verifies the Supabase access token before creating a subscription session. Before granting paid entitlements, implement signed Stripe webhook verification for checkout.session.completed, customer.subscription.updated/deleted and invoice.payment_failed, persist subscription state against the Supabase user, and enforce entitlements server-side in every API route. Client-side plan labels are not authorization.
 
-## Video provider
-Video generation is intentionally provider-neutral. Set:
-- `VIDEO_PROVIDER_URL` — provider's create-job endpoint
-- `VIDEO_PROVIDER_API_KEY` — provider API key
+The video and avatar adapters are provider-neutral. Adapt request/response fields and implement async job polling for your selected provider. Require explicit permission for any likeness or voice use.
 
-The current adapter sends JSON `{ prompt, image_url? }` with Bearer authentication and recognizes `video_url`, `output_url`, or `url` in the response. Many providers use asynchronous job polling and different schemas; adapt `api/video.js` to the selected provider before enabling production video jobs.
-
-## Production work still required
-- Configure the secrets above in Vercel; never commit API keys.
-- Confirm the OpenAI API project has billing and access to the selected models.
-- Add authentication, per-user authorization, request quotas, abuse controls, and rate limiting before public launch.
-- Add durable object storage and a database for persistent galleries and user accounts.
-- Implement payment checkout/webhooks and admin authorization before accepting payments.
-- Configure provider-specific video job polling and storage.
-- Run a production test suite and resolve the existing Vercel 403 team/project authorization issue.
-
-The browser never receives provider API keys. Do not add secrets to HTML, JavaScript bundles, or Git.
+AI usage is billed by connected providers. Account auth, checkout session creation and generation endpoints require configured credentials; durable project sync, payment webhooks, subscription enforcement and production rate limiting remain separate deployment tasks.
