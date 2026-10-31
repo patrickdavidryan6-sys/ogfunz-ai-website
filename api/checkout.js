@@ -1,0 +1,9 @@
+module.exports=async function(req,res){
+ if(req.method!=="POST")return res.status(405).json({error:"Method not allowed"});
+ const secret=process.env.STRIPE_SECRET_KEY,base=process.env.SITE_URL,supa=process.env.SUPABASE_URL,anon=process.env.SUPABASE_ANON_KEY,token=typeof req.body?.accessToken==="string"?req.body.accessToken:"",plan=req.body?.plan;
+ if(!secret||!base||!supa||!anon)return res.status(503).json({error:"Checkout requires Stripe and Supabase environment variables."});
+ if(!token)return res.status(401).json({error:"Sign in before checkout."});
+ const price=plan==="creator"?process.env.STRIPE_CREATOR_PRICE_ID:plan==="pro"?process.env.STRIPE_PRO_PRICE_ID:null;
+ if(!price)return res.status(503).json({error:"Selected Stripe price is not configured."});
+ try{const v=await fetch(supa.replace(/\/$/,"")+"/auth/v1/user",{headers:{apikey:anon,Authorization:"Bearer "+token}});if(!v.ok)return res.status(401).json({error:"Session invalid or expired."});const u=await v.json();const form=new URLSearchParams({mode:"subscription","line_items[0][price]":price,"line_items[0][quantity]":"1",success_url:base.replace(/\/$/,"")+"/studio.html?checkout=success",cancel_url:base.replace(/\/$/,"")+"/studio.html?checkout=cancel",client_reference_id:u.id||""});if(u.email)form.set("customer_email",u.email);const r=await fetch("https://api.stripe.com/v1/checkout/sessions",{method:"POST",headers:{Authorization:"Bearer "+secret,"Content-Type":"application/x-www-form-urlencoded"},body:form});const d=await r.json();if(!r.ok)return res.status(r.status).json({error:d.error?.message||"Stripe checkout failed."});return res.status(200).json({url:d.url});}catch(e){return res.status(502).json({error:"Could not create checkout session."});}
+};
