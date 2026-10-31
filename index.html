@@ -38,4 +38,8 @@
 document.getElementById('year').textContent=new Date().getFullYear();
 document.getElementById('tryBtn').addEventListener('click',()=>{const v=document.getElementById('idea').value.trim();document.getElementById('notice').textContent=v?'Thanks — your idea is ready for the OGFUNZ AI workspace. AI generation will be enabled when the platform services are connected.':'Enter an idea first, then select Start creating.';});
 </script>
+<script type="module">
+import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights';
+injectSpeedInsights();
+</script>
 </body></html>
