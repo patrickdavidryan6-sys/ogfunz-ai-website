@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090d">
+<meta name="description" content="ØĞMÛŠKŶ AI Media Studio — generate images, edit photos and build website drafts in one creative workspace.">
+<link rel="icon" href="/logo.svg">
+<title>ØĞMÛŠKŶ AI Media Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#08090d;--panel:#11131b;--line:#292d3a;--text:#f7f4ed;--muted:#a6a2a0;--gold:#d7ad59;--gold2:#f4d99b;--violet:#a99aff;--green:#55d6a4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 76% -12%,#51402a55,transparent 36%),var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.shell{max-width:1180px;margin:auto;padding:20px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding:5px 0 17px}.brand{display:flex;align-items:center;gap:10px;font-weight:850}.brand img{width:44px;height:44px}.brand small{display:block;color:var(--gold);font-size:9px;letter-spacing:2px}.toplinks{display:flex;gap:18px;align-items:center;color:#c9c5bd;font-size:13px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#ffffff08;color:#eee8dd;padding:11px 15px;border-radius:11px;font-weight:750;cursor:pointer}.btn.primary{background:linear-gradient(110deg,#d7ad59,#9e6b27);color:#17120a;border:0}.btn:disabled{opacity:.55;cursor:wait}.hero{padding:56px 0 30px;text-align:center}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-.05em;margin:12px auto;max-width:850px}.hero h1 em{font-style:normal;color:var(--gold2)}.hero p{max-width:690px;margin:0 auto;color:var(--muted);font-size:17px}.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}.workspace{display:grid;grid-template-columns:235px minmax(0,1fr);gap:18px;margin-top:22px}.sidebar,.panel,.integration{background:linear-gradient(145deg,#151822,#10121a);border:1px solid var(--line);border-radius:17px}.sidebar{padding:13px;height:max-content;position:sticky;top:14px}.side-label{padding:9px 10px 5px;color:#817b73;font-size:10px;letter-spacing:1.5px}.side-btn{width:100%;display:block;text-align:left;background:transparent;border:0;color:#c9c5bd;padding:11px;border-radius:10px;margin:3px 0;cursor:pointer}.side-btn.active,.side-btn:hover{background:#d7ad5919;color:var(--gold2)}.content{min-width:0}.panel{padding:22px;margin-bottom:16px}.panel h2{margin:0 0 5px;font-size:21px}.panel>p{color:var(--muted);margin:0 0 16px}.field{display:block;font-size:13px;color:#d8d3c8;margin:13px 0 7px}textarea,input[type=text],input[type=url],select{width:100%;background:#090b11;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px;outline:none}textarea{min-height:110px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:var(--gold)}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}.row>*{flex:1}.row .btn{flex:0 0 auto}.upload{border:1px dashed #655b47;border-radius:12px;padding:16px;text-align:center;margin:12px 0;color:var(--muted)}input[type=file]{max-width:100%;color:#c9c5bd}.check{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:#ddd;margin:12px 0}.status{color:var(--gold2);font-size:13px;min-height:21px;margin-top:10px}.result{margin-top:15px}.result img,.result video{max-width:100%;max-height:570px;border:1px solid var(--line);border-radius:12px;display:block}.result iframe{width:100%;height:470px;border:1px solid var(--line);border-radius:12px;background:white;margin-top:12px}.notice{background:#d7ad5910;border:1px solid #d7ad5940;border-radius:11px;padding:12px;color:#e8d5ad;font-size:12px;margin-top:14px}.hidden{display:none!important}.integrations{padding:25px 0 45px}.integrations h2{text-align:center;font-size:28px;margin:0 0 6px}.integrations .sub{text-align:center;color:var(--muted);margin:0 auto 20px;max-width:680px}.integration-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.integration{display:flex;flex-direction:column;gap:7px;padding:16px;min-height:105px}.integration:hover{border-color:#8b5cf6;background:#1b1725}.integration span{font-size:13px;color:#a1a1aa}.integration small{color:#dfbf7e;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.integration.pending{border-style:dashed;opacity:.78}.foot{border-top:1px solid var(--line);padding:20px 0;color:#77736e;font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:850px){.workspace{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow:auto;gap:4px}.side-label{display:none}.side-btn{white-space:nowrap;width:auto}.integration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toplinks{gap:10px}}@media(max-width:560px){.shell{padding:12px}.hero{padding:38px 0 18px}.hero p{font-size:15px}.panel{padding:15px}.workspace{gap:10px}.integration-grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-wrap:wrap}.toplinks{width:100%;justify-content:space-between}.row .btn{width:100%}.foot{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+<a class="brand" href="/" aria-label="ØĞMÛŠKŶ home"><img src="/logo.svg" alt="ØĞMÛŠKŶ logo"><span>ØĞMÛŠKŶ<small>🙂‍↔️ OFFICIAL BRAND</small></span></a>
+<nav class="toplinks"><a href="/">Home</a><a href="studio.html">Full AI Studio</a><a href="#integrations">Integrations</a></nav>
+</header>
+<section class="hero">
+<div class="eyebrow">Official creative workspace</div>
+<h1>Make more with <em>ØĞMÛŠKŶ AI.</em></h1>
+<p>Generate images, edit photos and turn a brief into a website draft. Your existing AI Agent, video tools and full workspace remain one click away.</p>
+<div class="hero-actions"><a class="btn primary" href="studio.html">Open Full AI Studio</a><a class="btn" href="#create">Start creating</a></div>
+</section>
+<div class="workspace" id="create">
+<aside class="sidebar">
+<div class="side-label">CREATE</div>
+<button class="side-btn active" data-view="generate">✦ Image generator</button>
+<button class="side-btn" data-view="edit">✎ Photo editor</button>
+<button class="side-btn" data-view="website">⌘ AI website builder</button>
+<div class="side-label">MORE TOOLS</div>
+<a class="side-btn" href="studio.html">◈ AI Agent & video tools ↗</a>
+<a class="side-btn" href="studio.html">▦ Projects & account ↗</a>
+</aside>
+<main class="content">
+<section id="view-generate" class="panel view">
+<h2>AI Image Generator</h2><p>Create original visuals from a written prompt using the image service already configured for your website.</p>
+<label class="field" for="imagePrompt">Image prompt</label><textarea id="imagePrompt" placeholder="A cinematic editorial portrait with warm golden-hour light, natural skin texture and a refined studio background…"></textarea>
+<div class="row"><select id="imageSize" aria-label="Image size"><option value="1024x1024">Square · 1024 × 1024</option><option value="1536x1024">Landscape · 1536 × 1024</option><option value="1024x1536">Portrait · 1024 × 1536</option></select><select id="imageQuality" aria-label="Image quality"><option value="medium">Medium quality</option><option value="high">High quality</option><option value="low">Low quality</option></select><button class="btn primary" id="generateImage">Generate image</button></div>
+<div class="status" id="imageStatus" role="status"></div><div class="result" id="imageResult"></div>
+</section>
+<section id="view-edit" class="panel view hidden">
+<h2>AI Photo Editor</h2><p>Upload a photo and describe the changes. Keep permission to edit the image confirmed before submitting.</p>
+<label class="field" for="editPrompt">Editing instructions</label><textarea id="editPrompt" placeholder="Replace the background with a clean studio setting. Preserve the subject's identity, pose and natural appearance…"></textarea>
+<div class="upload"><input id="editFile" type="file" accept="image/png,image/jpeg,image/webp"></div>
+<label class="check"><input id="editConsent" type="checkbox"> I own this image or have permission to edit it.</label>
+<button class="btn primary" id="editImage">Apply photo edit</button><div class="status" id="editStatus" role="status"></div><div class="result" id="editResult"></div>
+</section>
+<section id="view-website" class="panel view hidden">
+<h2>AI Website Builder</h2><p>Generate a responsive HTML website draft using the website-generation API already present in your project.</p>
+<label class="field" for="sitePrompt">Describe the website you want</label><textarea id="sitePrompt" placeholder="Build a premium fashion brand website with a responsive hero, product grid, about section and contact details…"></textarea>
+<div class="row"><select id="siteStyle" aria-label="Website style"><option>dark premium</option><option>minimal light</option><option>bold creative</option></select><button class="btn primary" id="buildWebsite">Build website draft</button></div>
+<div class="status" id="siteStatus" role="status"></div><div class="result" id="siteResult"></div>
+<div class="notice">The builder creates a downloadable HTML draft and safe preview. Publishing a generated site still requires review and a deployment step.</div>
+</section>
+</main>
+</div>
+<section class="integrations" id="integrations">
+<h2>Connected Tools &amp; Integrations</h2><p class="sub">Quick access to the AI, infrastructure and developer services in your integration list. Opening a provider does not automatically authorize an API connection.</p>
+<div class="integration-grid">
+<a class="integration" href="https://huggingface.co/" target="_blank" rel="noopener noreferrer"><strong>Hugging Face</strong><span>Models, inference and AI assets ↗</span><small>Provider access</small></a>
+<a class="integration" href="https://tavily.com/" target="_blank" rel="noopener noreferrer"><strong>Tavily</strong><span>Web search and research API ↗</span><small>Provider access</small></a>
+<a class="integration" href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer"><strong>Cloudflare</strong><span>DNS, security and edge services ↗</span><small>Account access</small></a>
+<a class="integration" href="https://www.magicpath.ai/" target="_blank" rel="noopener noreferrer"><strong>MagicPath</strong><span>AI interface and app design ↗</span><small>Provider access</small></a>
+<a class="integration" href="https://github.com/" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>Source control and deployment workflows ↗</span><small>Repository access</small></a>
+<a class="integration" href="https://www.runpod.io/" target="_blank" rel="noopener noreferrer"><strong>Runpod (Official)</strong><span>GPU compute and serverless inference ↗</span><small>Provider access</small></a>
+<a class="integration" href="https://www.miniup.io/" target="_blank" rel="noopener noreferrer"><strong>MiniUp</strong><span>Publish sites, APIs and data apps ↗</span><small>Provider access</small></a>
+<a class="integration" href="https://www.postman.com/" target="_blank" rel="noopener noreferrer"><strong>Postman</strong><span>API testing and documentation ↗</span><small>Developer access</small></a>
+<a class="integration" href="https://openai.com/business/plugins/openai-ads-conversions/" target="_blank" rel="noopener noreferrer"><strong>OpenAI Ads Conversions</strong><span>Measurement Pixel and Conversions API setup ↗</span><small>Configuration required</small></a>
+<div class="integration pending"><strong>Platform Bridge</strong><span>Provider URL and connection details are still needed.</span><small>Setup pending</small></div>
+<div class="integration pending"><strong>Plugin Creator</strong><span>Configure through your connected ChatGPT workspace.</span><small>Setup pending</small></div>
+</div>
+<div class="notice">Security: provider API keys belong in server-side environment variables. Do not paste private keys into this page or commit them to GitHub. External integrations remain marked as setup-required until their APIs and permissions are configured.</div>
+</section>
+<footer class="foot"><span>© <span id="year"></span> ØĞMÛŠKŶ 🙂‍↔️ OFFICIAL BRAND · OGFUNZ AI</span><a href="studio.html">Open the complete AI Studio ↗</a></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+$('year').textContent=new Date().getFullYear();
+document.querySelectorAll('[data-view]').forEach(function(button){button.addEventListener('click',function(){document.querySelectorAll('[data-view]').forEach(function(x){x.classList.toggle('active',x===button)});document.querySelectorAll('.view').forEach(function(x){x.classList.add('hidden')});$('view-'+button.dataset.view).classList.remove('hidden')})});
+function status(id,message){$(id).textContent=message}
+async function postJSON(url,body){const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw new Error(data.error||'The request failed.');return data}
+$('generateImage').addEventListener('click',async function(){const prompt=$('imagePrompt').value.trim();if(!prompt)return status('imageStatus','Enter an image prompt first.');const button=$('generateImage');button.disabled=true;status('imageStatus','Generating your image…');$('imageResult').innerHTML='';try{const data=await postJSON('/api/images',{prompt:prompt,size:$('imageSize').value,quality:$('imageQuality').value});const image=document.createElement('img');image.alt='Generated image';image.src=data.image;const link=document.createElement('a');link.className='btn';link.href=data.image;link.download='ogmusky-generated-image.png';link.textContent='Download image';$('imageResult').append(image,link);status('imageStatus','Image generated successfully.')}catch(error){status('imageStatus',error.message)}finally{button.disabled=false}});
+$('editImage').addEventListener('click',async function(){const file=$('editFile').files[0],prompt=$('editPrompt').value.trim();if(!file||!prompt)return status('editStatus','Choose a photo and enter editing instructions.');if(file.size>20*1024*1024)return status('editStatus','The photo must be smaller than 20 MB.');if(!$('editConsent').checked)return status('editStatus','Confirm that you own or have permission to edit this photo.');const button=$('editImage');button.disabled=true;status('editStatus','Editing your photo…');$('editResult').innerHTML='';try{const form=new FormData();form.append('image',file);form.append('prompt',prompt);const response=await fetch('/api/edit',{method:'POST',body:form});const data=await response.json();if(!response.ok)throw new Error(data.error||'Photo editing failed.');const image=document.createElement('img');image.alt='Edited photo';image.src=data.image;const link=document.createElement('a');link.className='btn';link.href=data.image;link.download='ogmusky-edited-photo.png';link.textContent='Download edited photo';$('editResult').append(image,link);status('editStatus','Photo edited successfully.')}catch(error){status('editStatus',error.message)}finally{button.disabled=false}});
+$('buildWebsite').addEventListener('click',async function(){const prompt=$('sitePrompt').value.trim();if(!prompt)return status('siteStatus','Describe your website first.');const button=$('buildWebsite');button.disabled=true;status('siteStatus','Generating your website draft…');$('siteResult').innerHTML='';try{const data=await postJSON('/api/website',{prompt:prompt,style:$('siteStyle').value});const blob=new Blob([data.html],{type:'text/html'}),url=URL.createObjectURL(blob);const download=document.createElement('a');download.className='btn';download.href=url;download.download='ogmusky-website-draft.html';download.textContent='Download HTML draft';const preview=document.createElement('iframe');preview.title='Generated website preview';preview.setAttribute('sandbox','allow-scripts');preview.srcdoc=data.html;$('siteResult').append(download,preview);status('siteStatus','Website draft ready. Review it before publishing.')}catch(error){status('siteStatus',error.message)}finally{button.disabled=false}});
+</script>
+</body>
+</html>
