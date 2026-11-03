@@ -1,14 +1,22 @@
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
-  const endpoint = process.env.VIDEO_PROVIDER_URL;
-  const key = process.env.VIDEO_PROVIDER_API_KEY;
-  if (!endpoint || !key) return res.status(503).json({ error: "Video generation is not enabled yet. Add VIDEO_PROVIDER_URL and VIDEO_PROVIDER_API_KEY in Vercel after choosing a supported video provider." });
+  const key = process.env.FAL_KEY;
+  if (!key) return res.status(503).json({ error: "FAL_KEY is not configured in Vercel." });
   const prompt = typeof req.body?.prompt === "string" ? req.body.prompt.trim() : "";
-  if (!prompt || prompt.length > 10000) return res.status(400).json({ error: "Enter a video prompt under 10,000 characters." });
+  const imageUrl = typeof req.body?.imageUrl === "string" ? req.body.imageUrl.trim() : "";
+  if (!prompt || prompt.length > 5000) return res.status(400).json({ error: "Enter a video prompt under 5,000 characters." });
+  if (imageUrl && !/^https:\/\//i.test(imageUrl)) return res.status(400).json({ error: "Starting image must be a public HTTPS URL." });
+  const endpoint = imageUrl ? "fal-ai/wan/v2.7/image-to-video" : "fal-ai/wan/v2.7/text-to-video";
+  const input = imageUrl ? { prompt, image_url: imageUrl, duration: 5, resolution: "720p", enable_safety_checker: true } : { prompt, duration: 5, resolution: "720p", enable_safety_checker: true };
   try {
-    const response = await fetch(endpoint, { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ prompt, image_url: req.body.imageUrl || undefined }) });
+    const response = await fetch(`https://queue.fal.run/${endpoint}`, {
+      method: "POST",
+      headers: { "Authorization": `Key ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify(input)
+    });
     const data = await response.json();
-    if (!response.ok) return res.status(response.status).json({ error: data.error?.message || data.message || "Video provider request failed." });
-    return res.status(200).json({ videoUrl: data.video_url || data.output_url || data.url || null, jobId: data.id || data.job_id || null, message: data.message || "Video job submitted. Configure your provider's status/result polling before production use." });
-  } catch (error) { return res.status(502).json({ error: "Could not reach the video provider." }); }
+    if (!response.ok) return res.status(response.status).json({ error: data.detail?.[0]?.msg || data.error || "Fal video request failed." });
+    if (!data.request_id) return res.status(502).json({ error: "Fal did not return a video job ID." });
+    return res.status(202).json({ requestId: data.request_id, endpoint, message: "Video queued on Fal. Checking progress…" });
+  } catch (error) { return res.status(502).json({ error: "Could not reach Fal video generation." }); }
 };
